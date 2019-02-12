@@ -127,4 +127,29 @@ describe('<ngx-charts-bar-horizontal>', () => {
     }));
     
   });
+  describe('bar-max-width', () => {
+    it('should render correct cell size, with zero padding, but fixed width', async(() => {
+      TestBed.overrideComponent(TestComponent, {
+        set: {
+          template: `
+              <ngx-charts-bar-horizontal
+                [view]="[400,800]"
+                [scheme]="colorScheme"
+                [results]="single"
+                [barPadding]="20" [barMaxWidth]="30">
+              </ngx-charts-bar-horizontal>`
+        }
+      });
+
+      TestBed.compileComponents().then(() => {
+        const fixture = TestBed.createComponent(TestComponent);
+        fixture.detectChanges();
+
+        const bar = fixture.debugElement.query(By.directive(BarComponent));
+
+        expect(bar.componentInstance.height).toEqual(113); // ~(780 - 5 * barPadding) / 6
+      });
+    }));
+
+  });
 });
