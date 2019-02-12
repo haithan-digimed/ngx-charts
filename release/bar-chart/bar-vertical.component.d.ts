@@ -17,6 +17,10 @@ export declare class BarVerticalComponent extends BaseChartComponent {
     showGridLines: boolean;
     activeEntries: any[];
     schemeType: string;
+    trimXAxisTicks: boolean;
+    trimYAxisTicks: boolean;
+    maxXAxisTickLength: number;
+    maxYAxisTickLength: number;
     xAxisTickFormatting: any;
     yAxisTickFormatting: any;
     xAxisTicks: any[];
@@ -28,6 +32,7 @@ export declare class BarVerticalComponent extends BaseChartComponent {
     yScaleMin: number;
     showDataLabel: boolean;
     dataLabelFormatting: any;
+    barMaxWidth: number;
     activate: EventEmitter<any>;
     deactivate: EventEmitter<any>;
     tooltipTemplate: TemplateRef<any>;
