@@ -100,6 +100,7 @@ export class AppComponent implements OnInit {
   trimYAxisTicks = true;
   maxXAxisTickLength = 16;
   maxYAxisTickLength = 16;
+  barMaxWidth: number;
 
   curves = {
     Basis: shape.curveBasis,
