@@ -136,12 +136,13 @@ export class BarHorizontal2DComponent extends BaseChartComponent {
   @Input() yAxisTicks: any[];
   @Input() groupPadding = 16;
   @Input() barPadding = 8;
+  @Input() barMaxWidth = 50;
   @Input() roundDomains: boolean = false;
   @Input() roundEdges: boolean = true;
   @Input() xScaleMax: number;
   @Input() showDataLabel: boolean = false;
   @Input() dataLabelFormatting: any;
- 
+
   @Output() activate: EventEmitter<any> = new EventEmitter();
   @Output() deactivate: EventEmitter<any> = new EventEmitter();
 
@@ -215,9 +216,10 @@ export class BarHorizontal2DComponent extends BaseChartComponent {
   getInnerScale(): any {
     const height = this.groupScale.bandwidth();
     const spacing = this.innerDomain.length / (height / this.barPadding + 1);
+    const maxHeight = Math.min(this.barMaxWidth * this.innerDomain.length, this.dims.height);
 
     return scaleBand()
-      .rangeRound([0, height])
+      .rangeRound([0, this.barMaxWidth ? maxHeight : height])
       .paddingInner(spacing)
       .domain(this.innerDomain);
   }

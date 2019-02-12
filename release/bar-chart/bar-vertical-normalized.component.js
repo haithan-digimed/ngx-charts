@@ -41,6 +41,7 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.activate = new EventEmitter();
         _this.deactivate = new EventEmitter();
@@ -103,8 +104,9 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
     };
     BarVerticalNormalizedComponent.prototype.getXScale = function () {
         var spacing = this.groupDomain.length / (this.dims.width / this.barPadding + 1);
+        var maxWidth = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.width);
         return scaleBand()
-            .rangeRound([0, this.dims.width])
+            .rangeRound([0, this.barMaxWidth ? maxWidth : this.dims.width])
             .paddingInner(spacing)
             .domain(this.groupDomain);
     };
@@ -283,6 +285,10 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
         Input(),
         __metadata("design:type", Object)
     ], BarVerticalNormalizedComponent.prototype, "barPadding", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Object)
+    ], BarVerticalNormalizedComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Input(),
         __metadata("design:type", Boolean)

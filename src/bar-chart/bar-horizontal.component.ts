@@ -105,6 +105,7 @@ export class BarHorizontalComponent extends BaseChartComponent {
   @Input() xAxisTicks: any[];
   @Input() yAxisTicks: any[];
   @Input() barPadding = 8;
+  @Input() barMaxWidth = 50;
   @Input() roundDomains: boolean = false;
   @Input() roundEdges: boolean = true;
   @Input() xScaleMax: number;
@@ -176,9 +177,9 @@ export class BarHorizontalComponent extends BaseChartComponent {
   getYScale(): any {
     this.yDomain = this.getYDomain();
     const spacing = this.yDomain.length / (this.dims.height / this.barPadding + 1);
-
+    const maxHeight = Math.min(this.barMaxWidth * this.yDomain.length, this.dims.height);
     return scaleBand()
-      .rangeRound([0, this.dims.height])
+      .rangeRound([0, this.barMaxWidth ? maxHeight : this.dims.height])
       .paddingInner(spacing)
       .domain(this.yDomain);
   }

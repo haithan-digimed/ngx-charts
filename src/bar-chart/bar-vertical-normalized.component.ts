@@ -123,6 +123,7 @@ export class BarVerticalNormalizedComponent extends BaseChartComponent {
   @Input() xAxisTicks: any[];
   @Input() yAxisTicks: any[];
   @Input() barPadding = 8;
+  @Input() barMaxWidth = 50;
   @Input() roundDomains: boolean = false;
 
   @Output() activate: EventEmitter<any> = new EventEmitter();
@@ -206,9 +207,9 @@ export class BarVerticalNormalizedComponent extends BaseChartComponent {
 
   getXScale(): any {
     const spacing = this.groupDomain.length / (this.dims.width / this.barPadding + 1);
-
+    const maxWidth = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.width);
     return scaleBand()
-      .rangeRound([0, this.dims.width])
+      .rangeRound([0, this.barMaxWidth ? maxWidth : this.dims.width])
       .paddingInner(spacing)
       .domain(this.groupDomain);
   }

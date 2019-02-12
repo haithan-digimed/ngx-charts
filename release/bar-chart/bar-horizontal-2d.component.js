@@ -42,6 +42,7 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
         _this.maxYAxisTickLength = 16;
         _this.groupPadding = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -95,8 +96,9 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
     BarHorizontal2DComponent.prototype.getInnerScale = function () {
         var height = this.groupScale.bandwidth();
         var spacing = this.innerDomain.length / (height / this.barPadding + 1);
+        var maxHeight = Math.min(this.barMaxWidth * this.innerDomain.length, this.dims.height);
         return scaleBand()
-            .rangeRound([0, height])
+            .rangeRound([0, this.barMaxWidth ? maxHeight : height])
             .paddingInner(spacing)
             .domain(this.innerDomain);
     };
@@ -330,6 +332,10 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
         Input(),
         __metadata("design:type", Object)
     ], BarHorizontal2DComponent.prototype, "barPadding", void 0);
+    __decorate([
+        Input(),
+        __metadata("design:type", Object)
+    ], BarHorizontal2DComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Input(),
         __metadata("design:type", Boolean)

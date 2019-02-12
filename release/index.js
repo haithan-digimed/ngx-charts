@@ -2261,6 +2261,7 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
         _this.maxYAxisTickLength = 16;
         _this.groupPadding = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -2314,8 +2315,9 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
     BarHorizontal2DComponent.prototype.getInnerScale = function () {
         var height = this.groupScale.bandwidth();
         var spacing = this.innerDomain.length / (height / this.barPadding + 1);
+        var maxHeight = Math.min(this.barMaxWidth * this.innerDomain.length, this.dims.height);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, height])
+            .rangeRound([0, this.barMaxWidth ? maxHeight : height])
             .paddingInner(spacing)
             .domain(this.innerDomain);
     };
@@ -2551,6 +2553,10 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
     ], BarHorizontal2DComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarHorizontal2DComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarHorizontal2DComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -2665,6 +2671,7 @@ var BarHorizontalNormalizedComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.activate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         _this.deactivate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -2727,8 +2734,9 @@ var BarHorizontalNormalizedComponent = /** @class */ (function (_super) {
     };
     BarHorizontalNormalizedComponent.prototype.getYScale = function () {
         var spacing = this.groupDomain.length / (this.dims.height / this.barPadding + 1);
+        var maxHeight = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.height);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, this.dims.height])
+            .rangeRound([0, this.barMaxWidth ? maxHeight : this.dims.height])
             .paddingInner(spacing)
             .domain(this.groupDomain);
     };
@@ -2909,6 +2917,10 @@ var BarHorizontalNormalizedComponent = /** @class */ (function (_super) {
     ], BarHorizontalNormalizedComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarHorizontalNormalizedComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarHorizontalNormalizedComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -3007,6 +3019,7 @@ var BarHorizontalStackedComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.showDataLabel = false;
         _this.activate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -3101,8 +3114,9 @@ var BarHorizontalStackedComponent = /** @class */ (function (_super) {
     };
     BarHorizontalStackedComponent.prototype.getYScale = function () {
         var spacing = this.groupDomain.length / (this.dims.height / this.barPadding + 1);
+        var maxHeight = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.height);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, this.dims.height])
+            .rangeRound([0, this.barMaxWidth ? maxHeight : this.dims.height])
             .paddingInner(spacing)
             .domain(this.groupDomain);
     };
@@ -3295,6 +3309,10 @@ var BarHorizontalStackedComponent = /** @class */ (function (_super) {
     ], BarHorizontalStackedComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarHorizontalStackedComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarHorizontalStackedComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -3402,6 +3420,7 @@ var BarHorizontalComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -3449,8 +3468,9 @@ var BarHorizontalComponent = /** @class */ (function (_super) {
     BarHorizontalComponent.prototype.getYScale = function () {
         this.yDomain = this.getYDomain();
         var spacing = this.yDomain.length / (this.dims.height / this.barPadding + 1);
+        var maxHeight = Math.min(this.barMaxWidth * this.yDomain.length, this.dims.height);
         return Object(__WEBPACK_IMPORTED_MODULE_1_d3_scale__["scaleBand"])()
-            .rangeRound([0, this.dims.height])
+            .rangeRound([0, this.barMaxWidth ? maxHeight : this.dims.height])
             .paddingInner(spacing)
             .domain(this.yDomain);
     };
@@ -3629,6 +3649,10 @@ var BarHorizontalComponent = /** @class */ (function (_super) {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], BarHorizontalComponent.prototype, "barPadding", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarHorizontalComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
@@ -3876,6 +3900,7 @@ var BarVertical2DComponent = /** @class */ (function (_super) {
         _this.maxYAxisTickLength = 16;
         _this.groupPadding = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -3944,8 +3969,9 @@ var BarVertical2DComponent = /** @class */ (function (_super) {
     BarVertical2DComponent.prototype.getInnerScale = function () {
         var width = this.groupScale.bandwidth();
         var spacing = this.innerDomain.length / (width / this.barPadding + 1);
+        var maxWidth = Math.min(this.barMaxWidth * this.innerDomain.length, width);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, width])
+            .rangeRound([0, this.barMaxWidth ? maxWidth : width])
             .paddingInner(spacing)
             .domain(this.innerDomain);
     };
@@ -4173,6 +4199,10 @@ var BarVertical2DComponent = /** @class */ (function (_super) {
     ], BarVertical2DComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarVertical2DComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarVertical2DComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -4287,6 +4317,7 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.activate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         _this.deactivate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -4349,8 +4380,9 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
     };
     BarVerticalNormalizedComponent.prototype.getXScale = function () {
         var spacing = this.groupDomain.length / (this.dims.width / this.barPadding + 1);
+        var maxWidth = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.width);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, this.dims.width])
+            .rangeRound([0, this.barMaxWidth ? maxWidth : this.dims.width])
             .paddingInner(spacing)
             .domain(this.groupDomain);
     };
@@ -4531,6 +4563,10 @@ var BarVerticalNormalizedComponent = /** @class */ (function (_super) {
     ], BarVerticalNormalizedComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarVerticalNormalizedComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarVerticalNormalizedComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -4629,6 +4665,7 @@ var BarVerticalStackedComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.showDataLabel = false;
         _this.activate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -4726,8 +4763,9 @@ var BarVerticalStackedComponent = /** @class */ (function (_super) {
     };
     BarVerticalStackedComponent.prototype.getXScale = function () {
         var spacing = this.groupDomain.length / (this.dims.width / this.barPadding + 1);
+        var maxWidth = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.width);
         return Object(__WEBPACK_IMPORTED_MODULE_2_d3_scale__["scaleBand"])()
-            .rangeRound([0, this.dims.width])
+            .rangeRound([0, this.barMaxWidth ? maxWidth : this.dims.width])
             .paddingInner(spacing)
             .domain(this.groupDomain);
     };
@@ -4920,6 +4958,10 @@ var BarVerticalStackedComponent = /** @class */ (function (_super) {
     ], BarVerticalStackedComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarVerticalStackedComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarVerticalStackedComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -5027,6 +5069,7 @@ var BarVerticalComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -5260,6 +5303,10 @@ var BarVerticalComponent = /** @class */ (function (_super) {
     ], BarVerticalComponent.prototype, "barPadding", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], BarVerticalComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Boolean)
     ], BarVerticalComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -5282,10 +5329,6 @@ var BarVerticalComponent = /** @class */ (function (_super) {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", Object)
     ], BarVerticalComponent.prototype, "dataLabelFormatting", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", Number)
-    ], BarVerticalComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])

@@ -127,6 +127,7 @@ export class BarVerticalStackedComponent extends BaseChartComponent {
   @Input() xAxisTicks: any[];
   @Input() yAxisTicks: any[];
   @Input() barPadding = 8;
+  @Input() barMaxWidth = 50;
   @Input() roundDomains: boolean = false;
   @Input() yScaleMax: number;
   @Input() showDataLabel: boolean = false;
@@ -247,8 +248,9 @@ export class BarVerticalStackedComponent extends BaseChartComponent {
 
   getXScale(): any {
     const spacing = this.groupDomain.length / (this.dims.width / this.barPadding + 1);
+    const maxWidth = Math.min(this.barMaxWidth * this.groupDomain.length, this.dims.width);
     return scaleBand()
-      .rangeRound([0, this.dims.width])
+      .rangeRound([0, this.barMaxWidth ? maxWidth : this.dims.width])
       .paddingInner(spacing)
       .domain(this.groupDomain);
   }

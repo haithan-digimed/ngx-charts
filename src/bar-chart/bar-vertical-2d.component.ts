@@ -134,6 +134,7 @@ export class BarVertical2DComponent extends BaseChartComponent {
   @Input() yAxisTicks: any[];
   @Input() groupPadding = 16;
   @Input() barPadding = 8;
+  @Input() barMaxWidth = 50;
   @Input() roundDomains: boolean = false;
   @Input() roundEdges: boolean = true;
   @Input() yScaleMax: number;
@@ -227,8 +228,9 @@ export class BarVertical2DComponent extends BaseChartComponent {
   getInnerScale(): any {
     const width = this.groupScale.bandwidth();
     const spacing = this.innerDomain.length / (width / this.barPadding + 1);
+    const maxWidth = Math.min(this.barMaxWidth * this.innerDomain.length, width);
     return scaleBand()
-      .rangeRound([0, width])
+      .rangeRound([0, this.barMaxWidth ? maxWidth : width])
       .paddingInner(spacing)
       .domain(this.innerDomain);
   }

@@ -26,13 +26,13 @@ export declare class BarVerticalComponent extends BaseChartComponent {
     xAxisTicks: any[];
     yAxisTicks: any[];
     barPadding: number;
+    barMaxWidth: number;
     roundDomains: boolean;
     roundEdges: boolean;
     yScaleMax: number;
     yScaleMin: number;
     showDataLabel: boolean;
     dataLabelFormatting: any;
-    barMaxWidth: number;
     activate: EventEmitter<any>;
     deactivate: EventEmitter<any>;
     tooltipTemplate: TemplateRef<any>;

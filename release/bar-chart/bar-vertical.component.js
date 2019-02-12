@@ -40,6 +40,7 @@ var BarVerticalComponent = /** @class */ (function (_super) {
         _this.maxXAxisTickLength = 16;
         _this.maxYAxisTickLength = 16;
         _this.barPadding = 8;
+        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -273,6 +274,10 @@ var BarVerticalComponent = /** @class */ (function (_super) {
     ], BarVerticalComponent.prototype, "barPadding", void 0);
     __decorate([
         Input(),
+        __metadata("design:type", Object)
+    ], BarVerticalComponent.prototype, "barMaxWidth", void 0);
+    __decorate([
+        Input(),
         __metadata("design:type", Boolean)
     ], BarVerticalComponent.prototype, "roundDomains", void 0);
     __decorate([
@@ -295,10 +300,6 @@ var BarVerticalComponent = /** @class */ (function (_super) {
         Input(),
         __metadata("design:type", Object)
     ], BarVerticalComponent.prototype, "dataLabelFormatting", void 0);
-    __decorate([
-        Input(),
-        __metadata("design:type", Number)
-    ], BarVerticalComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Output(),
         __metadata("design:type", EventEmitter)

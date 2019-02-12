@@ -26,6 +26,7 @@ export declare class BarVerticalStackedComponent extends BaseChartComponent {
     xAxisTicks: any[];
     yAxisTicks: any[];
     barPadding: number;
+    barMaxWidth: number;
     roundDomains: boolean;
     yScaleMax: number;
     showDataLabel: boolean;
