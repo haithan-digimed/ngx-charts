@@ -6362,7 +6362,6 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
         _this.maxYAxisTickLength = 16;
         _this.groupPadding = 16;
         _this.barPadding = 8;
-        _this.barMaxWidth = 50;
         _this.roundDomains = false;
         _this.roundEdges = true;
         _this.showDataLabel = false;
@@ -6655,7 +6654,7 @@ var BarHorizontal2DComponent = /** @class */ (function (_super) {
     ], BarHorizontal2DComponent.prototype, "barPadding", void 0);
     __decorate([
         Input(),
-        __metadata("design:type", Object)
+        __metadata("design:type", Number)
     ], BarHorizontal2DComponent.prototype, "barMaxWidth", void 0);
     __decorate([
         Input(),
